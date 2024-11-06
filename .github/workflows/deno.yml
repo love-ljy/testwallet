@@ -1,42 +1,32 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# This workflow will install Deno then run `deno lint` and `deno test`.
-# For more information see: https://github.com/denoland/setup-deno
-
-name: Deno
+name: Deploy Vite React App to GitHub Pages
 
 on:
   push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
-
-permissions:
-  contents: read
+    branches:
+      - master  # 监听 main 分支的推送事件
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup repo
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Setup Deno
-        # uses: denoland/setup-deno@v1
-        uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31  # v1.1.2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          deno-version: v1.x
+          node-version: '16'  # 使用适合您项目的 Node.js 版本
 
-      # Uncomment this step to verify the use of 'deno fmt' on each commit.
-      # - name: Verify formatting
-      #   run: deno fmt --check
+      - name: Install dependencies
+        run: npm install  # 或者使用 yarn install
 
-      - name: Run linter
-        run: deno lint
+      - name: Build the project
+        run: npm run build  # 运行构建命令，Vite 默认输出在 ./dist 目录
 
-      - name: Run tests
-        run: deno test -A
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.TESTWALLET }}  # 使用个人访问令牌
+          publish_dir: ./dist  # 指定构建后输出目录
+          publish_branch: gh-pages  
