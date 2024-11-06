@@ -9,10 +9,5 @@ export default defineConfig({
     outDir: 'dist'
   },
   // @ts-ignore
-  base: /testwallet/,
-  server: {
-    fs: {
-      allow: ['../sdk', './']
-    }
-  }
+  base: /testwallet/
 })
