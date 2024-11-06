@@ -9,7 +9,7 @@ export default defineConfig({
     outDir: 'dist'
   },
   // @ts-ignore
-  base: '/',
+  base: './',
   server: {
     fs: {
       allow: ['../sdk', './']
