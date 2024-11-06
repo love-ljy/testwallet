@@ -9,7 +9,7 @@ export default defineConfig({
     outDir: 'dist'
   },
   // @ts-ignore
-  process.env.GH_PAGES ? '/testwallet/' : './',
+  base: process.env.GH_PAGES ? '/testwallet/' : './',
   server: {
     fs: {
       allow: ['../sdk', './']
