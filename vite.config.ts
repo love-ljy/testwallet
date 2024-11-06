@@ -6,13 +6,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist'
+    outDir: '/dist/'
   },
   // @ts-ignore
-  base: '/testwallet',
+  base: '/testwallet/',
   server: {
     fs: {
-      allow: ['../sdk', './'],
-    },
-  },
+      allow: ['../sdk', './']
+    }
+  }
 })
