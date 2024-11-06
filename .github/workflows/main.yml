@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'  # 使用适合您项目的 Node.js 版本
+          node-version: '16'  # 使用适合您项目的 Node.js 版本
 
       - name: Install dependencies
         run: npm install  # 或者使用 yarn install
@@ -27,5 +27,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的令牌
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # 使用个人访问令牌
           publish_dir: ./dist  # 指定构建后输出目录
