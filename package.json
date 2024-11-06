@@ -9,6 +9,7 @@
     "build:dev": "tsc && vite build",
     "preview": "vite preview"
   },
+  "homepage":"https://love-ljy.github.io/testwallet",
   "dependencies": {
     "@tonconnect/ui-react": "2.0.9",
     "eruda": "^2.11.2",
