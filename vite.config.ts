@@ -9,7 +9,7 @@ export default defineConfig({
     outDir: 'docs'
   },
   // @ts-ignore
-  base: 'textwallet',
+  base: '/testwallet',
   server: {
     fs: {
       allow: ['../sdk', './'],
