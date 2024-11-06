@@ -27,5 +27,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # 使用个人访问令牌
+          github_token: ${{ secrets.TESTWALLET }}  # 使用个人访问令牌
           publish_dir: ./dist  # 指定构建后输出目录
+          publish_branch: gh-pages  # Specify the branch to push to
