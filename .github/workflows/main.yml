@@ -1,0 +1,31 @@
+name: Deploy Vite React App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支的推送事件
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # 使用适合您项目的 Node.js 版本
+
+      - name: Install dependencies
+        run: npm install  # 或者使用 yarn install
+
+      - name: Build the project
+        run: npm run build  # 运行构建命令，Vite 默认输出在 ./dist 目录
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的令牌
+          publish_dir: ./dist  # 指定构建后输出目录
